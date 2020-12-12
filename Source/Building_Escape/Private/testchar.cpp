@@ -15,22 +15,7 @@ Atestchar::Atestchar()
 void Atestchar::BeginPlay()
 {
 	Super::BeginPlay();
-
-	GrabberComponent = GetOwner()->FindComponentByClass<UGrabberComponent>();
-	if (!GrabberComponent) {
-		UE_LOG(LogTemp, Error, TEXT("No Grabber"));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Grabber"));
-	}
-
-	PhysicsHandle = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
-	//Is there a handle?
-	if (!PhysicsHandle)
-	{
-		UE_LOG(LogTemp, Error, TEXT("No Physics handle! on: %s"), *GetOwner()->GetName());
-	}
+	
 }
 
 // Called every frame
