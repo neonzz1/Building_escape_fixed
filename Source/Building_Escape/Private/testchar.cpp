@@ -3,6 +3,8 @@
 
 #include "testchar.h"
 
+
+#define OUT
 // Sets default values
 Atestchar::Atestchar()
 {
@@ -15,6 +17,8 @@ Atestchar::Atestchar()
 void Atestchar::BeginPlay()
 {
 	Super::BeginPlay();
+
+	SetupInputComponent();
 	
 }
 
@@ -30,5 +34,31 @@ void Atestchar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAction("MoveRight", IE_Pressed, this, Atestchar::MoveRight);
+	PlayerInputComponent->BindAction("MoveForward", IE_Pressed, this, Atestchar::MoveForward);
+
 }
+
+FVector Atestchar::GetPlayerWorldPos()
+{
+	FVector PlayerViewpointLocation;
+	FRotator PlayerViewpointRotation;
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT PlayerViewpointLocation,
+		OUT PlayerViewpointRotation
+	);
+
+	return PlayerViewpointLocation;
+}
+void Atestchar::SetupInputComponent()
+{
+
+}
+
+void Atestchar::MoveRight()
+{
+	GetPlayerWorldPos();
+}
+
 

@@ -45,6 +45,24 @@ void UGrabberComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 		PhysicsHandle->SetTargetLocation(GetPlayerReach());
 	}
 
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
+
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT PlayerViewPointLocation,
+		OUT PlayerViewPointRotation
+	);
+
+	DrawDebugLine(
+		GetWorld(),
+		PlayerViewPointLocation,
+		GetPlayerReach(),
+		FColor(0, 255, 0),
+		false,
+		0.f,
+		0,
+		5.f
+	);
 }
 
 FVector UGrabberComponent::GetPlayerReach() const
