@@ -35,9 +35,6 @@ private:
 	UPROPERTY()
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 
-	UPROPERTY()
-	UInputComponent* InputComponent = nullptr;
-
 	void SetupInputComponent();
 
 	void MoveRight();
